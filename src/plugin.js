@@ -1,32 +1,43 @@
 import videojs from 'video.js';
 import document from 'global/document';
 import {version as VERSION} from '../package.json';
+import en from '../lang/en.json';
+import nl from '../lang/nl.json';
 
 const Button = videojs.getComponent('Button');
+
+const checkSafari = video => (video.webkitSupportsPresentationMode && typeof video.webkitSetPresentationMode === 'function');
+
+videojs.addLanguage('en', en);
+videojs.addLanguage('nl', nl);
 
 class ChromePip extends Button {
 
   constructor(player, options) {
     super(player, options);
-    this.controlText = options.text;
+
+    this.controlText(player.localize('PiP'));
     this.on(player, 'enterpictureinpicture', this.handlePipEvent);
 
-    if (!document.pictureInPictureEnabled) {
-      this.disable();
-    }
   }
 
   buildCSSClass() {
     return `vjs-chrome-pip ${super.buildCSSClass()}`;
   }
 
-  handlePipEvent() {
+  handlePipEvent(event) {
     videojs.log('Entered PiP mode');
   }
 
   handleClick() {
+    const video = this.player_.tech_.el_;
+
+    // safari
+    if (checkSafari(video)) {
+      video.webkitSetPresentationMode(video.webkitPresentationMode === 'picture-in-picture' ? 'inline' : 'picture-in-picture');
+    }
     if (!document.pictureInPictureElement) {
-      this.player_.tech_.el_.requestPictureInPicture()
+      video.requestPictureInPicture()
         .catch(error => {
           videojs.log(error);
         });
@@ -39,8 +50,6 @@ class ChromePip extends Button {
   }
 }
 
-ChromePip.prototype.controlText_ = 'PiP';
-
 // Include the version number.
 ChromePip.VERSION = VERSION;
 
@@ -51,8 +60,8 @@ const plugin = function(options) {
   this.on('ready', () => {
     const cb = this.controlBar;
 
-    if (document.pictureInPictureEnabled && !cb.childNameIndex_.Pip) {
-      const Toggle = cb.addChild('pip', options);
+    if (document.pictureInPictureEnabled || checkSafari(this.tech_.el_)) {
+      const Toggle = this.addChild('pip', options);
 
       cb.el().insertBefore(Toggle.el(), cb.fullscreenToggle.el());
     }

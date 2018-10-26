@@ -1,6 +1,6 @@
 {
-  "name": "@chrome-pip/videojs-chrome-pip",
-  "version": "0.0.1",
+  "name": "@bnnvara/videojs-chrome-pip",
+  "version": "0.0.2",
   "description": "implements the Picture in Picture API for google chrome",
   "main": "dist/videojs-chrome-pip.cjs.js",
   "module": "dist/videojs-chrome-pip.es.js",
@@ -42,8 +42,12 @@
     "videojs",
     "videojs-plugin"
   ],
-  "author": "Hendrik <hendrik@reinvent.nl>",
-  "license": "UNLICENSED",
+  "author": "BNNVARA",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/snkhubcom/videojs-chrome-pip#readme",
   "vjsstandard": {
     "ignore": [
       "dist",
