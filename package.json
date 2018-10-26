@@ -1,6 +1,6 @@
 {
   "name": "@bnnvara/videojs-chrome-pip",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "implements the Picture in Picture API for google chrome",
   "main": "dist/videojs-chrome-pip.cjs.js",
   "module": "dist/videojs-chrome-pip.es.js",

@@ -35,6 +35,7 @@ class ChromePip extends Button {
     // safari
     if (checkSafari(video)) {
       video.webkitSetPresentationMode(video.webkitPresentationMode === 'picture-in-picture' ? 'inline' : 'picture-in-picture');
+      return;
     }
     if (!document.pictureInPictureElement) {
       video.requestPictureInPicture()

@@ -1,6 +1,6 @@
 # videojs-chrome-pip
 
-implements the Picture in Picture API for google chrome
+This poorly named videojs plugin implements both the Picture in Picture API for Google Chrome and Safari
 
 ## Table of Contents
 
@@ -40,7 +40,7 @@ var videojs = require('video.js');
 // The actual plugin function is exported by this module, but it is also
 // attached to the `Player.prototype`; so, there is no need to assign it
 // to a variable.
-require('@chrome-pip/videojs-chrome-pip');
+require('@bnnvara/videojs-chrome-pip');
 
 var player = videojs('my-video');
 
@@ -52,13 +52,21 @@ player.chromePip();
 When using with RequireJS (or another AMD library), get the script in whatever way you prefer and `require` the plugin as you normally would:
 
 ```js
-require(['video.js', '@chrome-pip/videojs-chrome-pip'], function(videojs) {
+require(['video.js', '@bnnvara/videojs-chrome-pip'], function(videojs) {
   var player = videojs('my-video');
 
   player.chromePip();
 });
 ```
 
+### CSS
+The plugin relies on some css classes being available, easiest way is to load it in the HEAD of the document:
+```html
+<head>
+  <link href="//path/to/videojs-chrome-pip.css" rel="stylesheet">
+</head>
+
+```
 ## License
 
 ISC. Copyright 2018 BNNVARA
