@@ -13,3 +13,8 @@ v0.0.2:
 </p>
 v0.0.3: 
 <p>fixed an error message being displayed in safari and updated the readme file.</p> 
+v0.0.4: 
+<p><ul>
+<li>Changed the content of the dutch language file.</li>
+<li>Minor css change; decreases the icon size to fix the progressbar from shifting a few pixels up.
+</li></ul></p>

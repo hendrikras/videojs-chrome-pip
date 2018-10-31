@@ -6,17 +6,18 @@
 }
 
 .vjs-chrome-pip{
-  z-index: 100;
+  margin: 0px;
   position: relative;
-  left:20px;
+  z-index: 100;
+  left: 18px;
   font-family: 'videojs-chrome-pip';
-  font-size: 21px;
+  font-size: 25px;
 }
 .vjs-chrome-pip:before{
-  color: lightgrey;
+  color: #D3D3D3;
   content: "\e900";
 }
 .vjs-chrome-pip:hover:before{
-  color: white;
+  color: #fff;
   content: "\e900";
 }
